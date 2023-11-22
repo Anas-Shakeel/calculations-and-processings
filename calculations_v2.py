@@ -46,10 +46,13 @@ String Manipulation
 
 """
 
+
 import sys
 import math
-import hashlib as hl
 import random
+import hashlib as hl
+import secrets
+from string import ascii_letters, punctuation, digits
 
 
 class Helper:
@@ -718,9 +721,29 @@ class Generators:
         for _ in range(n):
             yield random.randrange(from_, to)
 
-    def generate_password(self):
-        """Random Password Generation"""
-        ...
+    def generate_password(self, n: int, length: int):
+        """
+        ### Random Password Generation
+        returns a generator of `n` randomly generated passwords of length `length`
+        """
+        # 'n' must be greater than zero
+        if not n > 0:
+            raise ValueError("'n' must be greater than zero")
+
+        # 'length' must be greater than zero
+        if not length > 0:
+            raise ValueError("'length' must be greater than zero")
+
+        # characters to use to generate passwords
+        characters = ascii_letters + digits + punctuation
+
+        # generating password
+        for _ in range(n):
+            password = ""
+            for i in range(length):
+                password += secrets.choice(characters)
+
+            yield password
 
 
 class Finders:
