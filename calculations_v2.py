@@ -49,6 +49,7 @@ String Manipulation
 import sys
 import math
 import hashlib as hl
+import random
 
 
 class Helper:
@@ -651,7 +652,7 @@ class Generators:
 
     def generate_hash(self, text="Python is awesome!"):
         """
-        Hash Generator/Converter
+        ### Hash Generator/Converter
 
         Algorithms Available:
         - MD-5
@@ -699,9 +700,23 @@ class Generators:
         """"""
         ...
 
-    def generate_random_numbers(Self):
-        """Random Numbers Generator"""
-        ...
+    def generate_random_numbers(self, n: int, from_: int, to: int):
+        """
+        ### Random Numbers Generator
+        returns a generator of `n` random numbers
+        """
+
+        # 'n' must be greater than 0
+        if n <= 0:
+            return None
+
+        # 'to' must be greater than 'from_'
+        if to <= from_:
+            raise ValueError("'to' must be greater than 'from_'")
+
+        # generating random numbers
+        for _ in range(n):
+            yield random.randrange(from_, to)
 
     def generate_password(self):
         """Random Password Generation"""
