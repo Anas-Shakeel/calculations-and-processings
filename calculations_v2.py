@@ -401,7 +401,7 @@ class Maths:
     def prime_number(self, n=5):
         """
         #### Prime number
-        Checks if `n` is a prime number or not.
+        Returns True if `n` is a prime number, False otherwise.
 
         A Prime number is a number which is divided only by 1 and itself.
 
@@ -409,11 +409,22 @@ class Maths:
         # Example:
         >> n = 5
         >> math.prime_number(n)
-
+        True
         ```
         """
 
-        ...
+    # count is {Division count > (how many times it was divided)}
+        count = 0
+
+        for i in range(1, n+1):
+            if (count > 2):
+                break
+
+            if n % i == 0:
+                count += 1
+
+        # True if count = 2, False otherwise
+        return True if count == 2 else False
 
     def prime_number_inrange(self, limit=10):
         """
@@ -653,7 +664,7 @@ class Generators:
     def __init__(self) -> None:
         pass
 
-    def generate_hash(self, text="Python is awesome!"):
+    def generate_hash(self, text: str):
         """
         ### Hash Generator/Converter
 
@@ -700,7 +711,10 @@ class Generators:
         return master
 
     def generate_patterns(self):
-        """"""
+        """
+        ### Generate Patterns
+        Generates patterns of sorts [coming soon!]
+        """
         ...
 
     def generate_random_numbers(self, n: int, from_: int, to: int):
@@ -762,3 +776,9 @@ class Strings:
     """Base class for string manipulations methods"""
 
     ...
+
+
+# ! REMOVE
+m = Maths()
+
+print(m.prime_number(int(input("Enter num: "))))
