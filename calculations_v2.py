@@ -776,9 +776,3 @@ class Strings:
     """Base class for string manipulations methods"""
 
     ...
-
-
-# ! REMOVE
-m = Maths()
-
-print(m.prime_number(int(input("Enter num: "))))
